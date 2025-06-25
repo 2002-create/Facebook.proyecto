@@ -1,0 +1,422 @@
+/* Variables para colores y fuentes (opcional, pero buena práctica) */
+:root {
+    --facebook-blue: #1877F2;
+    --facebook-dark-blue: #166FE5;
+    --background-gray: #F0F2F5;
+    --text-color-dark: #050505;
+    --text-color-medium: #65676B;
+    --border-color: #DADDE1;
+    --card-background: #FFFFFF;
+    --input-background: #F0F2F5;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Similares a las de Facebook */
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-gray);
+    color: var(--text-color-dark);
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- NAVBAR SUPERIOR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-background); /* Blanco para la barra superior */
+    padding: 8px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--facebook-blue);
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.search-bar {
+    border: none;
+    background-color: var(--input-background);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 15px;
+    outline: none;
+    width: 200px; /* Ajusta según necesidad */
+}
+
+.nav-icon {
+    margin: 0 10px;
+    width: 24px; /* Tamaño de los íconos */
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.nav-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.nav-icon:hover {
+    background-color: #E4E6EB; /* Gris claro al pasar el ratón */
+}
+
+.profile-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color-dark);
+    margin-left: 15px;
+    font-weight: 600;
+}
+
+.profile-avatar-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+    object-fit: cover;
+    border: 1px solid var(--border-color); /* Sutil borde */
+}
+
+.logout-button {
+    background-color: transparent;
+    border: none;
+    color: var(--facebook-blue);
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+    background-color: rgba(24, 119, 242, 0.1);
+}
+
+
+/* --- CONTENIDO PRINCIPAL Y LAYOUT DE 3 COLUMNAS --- */
+.main-content {
+    display: flex;
+    justify-content: center; /* Centra el contenido principal */
+    padding: 20px 0;
+    gap: 20px; /* Espacio entre columnas */
+    flex-grow: 1; /* Permite que el contenido principal ocupe el espacio restante */
+}
+
+.sidebar-left, .sidebar-right {
+    flex-basis: 250px; /* Ancho fijo para las barras laterales */
+    flex-shrink: 0; /* No se encogen */
+    background-color: var(--background-gray); /* Mismo fondo que el cuerpo */
+    padding: 10px;
+}
+
+.sidebar-left {
+    position: sticky; /* Opcional: para que se mantenga al hacer scroll */
+    top: 60px; /* Debajo de la navbar */
+    align-self: flex-start; /* Se alinea arriba */
+}
+
+.sidebar-right {
+    position: sticky;
+    top: 60px;
+    align-self: flex-start;
+}
+
+.feed-container {
+    flex-basis: 600px; /* Ancho del feed principal */
+    flex-grow: 1; /* Permite que crezca un poco si hay espacio */
+    max-width: 600px; /* Máximo ancho para el feed */
+}
+
+/* --- ELEMENTOS DE LA BARRA LATERAL --- */
+.sidebar-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: var(--card-background); /* Fondo blanco para las secciones */
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.sidebar-section h4 {
+    margin-top: 0;
+    color: var(--text-color-medium);
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--text-color-dark);
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    margin-bottom: 5px;
+}
+
+.sidebar-item:hover {
+    background-color: #E4E6EB;
+}
+
+.sidebar-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    object-fit: contain; /* Asegura que la imagen no se recorte */
+}
+
+/* --- TARJETA DE CREAR PUBLICACIÓN --- */
+.create-post-card {
+    background-color: var(--card-background);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    margin-bottom: 20px;
+}
+
+.create-post-card .post-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.create-post-card .profile-avatar-small {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.post-input-field {
+    flex-grow: 1;
+    border: none;
+    background-color: var(--input-background);
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none;
+    color: var(--text-color-dark);
+    line-height: 1.4;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.post-action-button {
+    background-color: transparent;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: var(--text-color-medium);
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.post-action-button:hover {
+    background-color: #F0F2F5;
+}
+
+.post-action-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.publish-button {
+    width: 100%;
+    background-color: var(--facebook-blue);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.publish-button:hover {
+    background-color: var(--facebook-dark-blue);
+}
+
+/* --- TARJETAS DE PUBLICACIÓN (POSTS) --- */
+.post-card {
+    background-color: var(--card-background);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    margin-bottom: 15px;
+}
+
+.post-card .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-card .profile-avatar {
+    width: 48px; /* Tamaño más grande para el avatar del post */
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.post-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-author {
+    font-weight: bold;
+    color: var(--text-color-dark);
+    text-decoration: none; /* Si fuera un enlace al perfil */
+}
+
+.post-time {
+    font-size: 13px;
+    color: var(--text-color-medium);
+}
+
+.post-content p {
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+    color: var(--text-color-dark);
+}
+
+.post-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.post-actions-bar {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.action-button {
+    background-color: transparent;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: var(--text-color-medium);
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.action-button:hover {
+    background-color: #F0F2F5;
+}
+
+.action-button img {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+}
+
+.no-posts, .no-contacts {
+    text-align: center;
+    color: var(--text-color-medium);
+    padding: 20px;
+}
+
+/* --- Media Queries para responsividad (opcional pero muy recomendado) --- */
+@media (max-width: 1024px) {
+    .sidebar-right {
+        display: none; /* Oculta la barra derecha en pantallas más pequeñas */
+    }
+    .main-content {
+        justify-content: center;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar-left {
+        display: none; /* Oculta la barra izquierda también */
+    }
+    .main-content {
+        padding: 10px;
+        flex-direction: column; /* Apila el contenido si es muy pequeño */
+        align-items: center; /* Centra los elementos apilados */
+    }
+    .feed-container {
+        width: 100%;
+        max-width: 600px; /* Mantiene un ancho máximo para el feed */
+    }
+    .navbar {
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+        justify-content: center;
+    }
+    .navbar-left, .navbar-right {
+        flex-grow: 1; /* Permite que se expandan */
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .search-bar {
+        width: 100%; /* La barra de búsqueda ocupa todo el ancho */
+        max-width: 300px;
+        margin-top: 5px;
+    }
+    .nav-icon {
+        margin: 0 5px;
+    }
+    .profile-link {
+        margin-left: 5px;
+    }
+    .logout-button {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 20px;
+    }
+    .profile-link span {
+        display: none; /* Oculta el nombre del usuario en el perfil para ahorrar espacio */
+    }
+    .action-button span {
+        display: none; /* Oculta el texto de los botones de acción en móviles */
+    }
+}
+
